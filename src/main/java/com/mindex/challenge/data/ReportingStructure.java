@@ -2,7 +2,7 @@ package com.mindex.challenge.data;
 
 import com.mindex.challenge.data.Employee;
 
-public class ReportingStrcuture {
+public class ReportingStructure {
 
     //An employee who we need to number of reports for.
     private Employee employee;
@@ -25,23 +25,18 @@ public class ReportingStrcuture {
     }
 
     public int getNumberOfReports() {
-        updateNumberOfReports(); //We run this everytime to ensure we return an up-to-date-value.
+        updateNumberOfReports(); //We run this everytime to ensure we return an up-to-date value.
         return numberOfReports;
     }
 
     protected void updateNumberOfReports() {
         numberOfReports = 0;
-        //If the employee we are looking at does not have any direct reports.
-        if(employee.getDirectReports() == null || employee.getDirectReports().size() == 0) {
-            numberOfReports = 0; //We don't change teh value at all
-        }
-        else {
-            for(Employee reportee : employee.getDirectReports()) {
-                //Add 1 report for the current employee, as well as however many reports
-                //they receive as well.
-                numberOfReports += (1 + reportee.getDirectReports().size());
-            }
-        }
 
+        //If an employee has no direct reports, this for loop doesn't run
+        for(Employee reportee : employee.getDirectReports()) {
+            //Add 1 report for the current reportee, as well as however many reports
+            //the reportee receives as well.
+            numberOfReports += (1 + reportee.getDirectReports().size());
+        }
     }
 }
