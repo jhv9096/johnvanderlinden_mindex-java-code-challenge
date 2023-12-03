@@ -13,6 +13,10 @@ public class ReportingStructure {
      */
     private int numberOfReports;
 
+    public ReportingStructure() {
+
+    }
+
     /*
     Returns the employee as an Employee object.
      */
