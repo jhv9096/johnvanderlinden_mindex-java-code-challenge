@@ -10,4 +10,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class ReportingStructureController {
     private static final Logger LOG = LoggerFactory.getLogger(ReportingStructure.class);
+
+    @Autowired
+    private ReportingStructureService reportingStructureService;
+
+
 }
