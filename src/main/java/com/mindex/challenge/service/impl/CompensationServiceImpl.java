@@ -22,11 +22,18 @@ public class CompensationServiceImpl implements CompensationService {
 
         compensationRepository.insert(compensation);
 
-        return null;
+        return compensation;
     }
 
     @Override
     public Compensation read(String employeeID) {
-        return null;
+        LOG.debug("Reading compensation for employee with ID [{}]", employeeID);
+
+        Compensation compensation = compensationRepository.findCompensationWithEmployeeID(employeeID);
+        if(compensation == null) {
+            throw new RuntimeException("Unable to find compensation for the employee with ID: " + employeeID + ". Please ensure a valid ID was entered.");
+        }
+
+        return compensation;
     }
 }
