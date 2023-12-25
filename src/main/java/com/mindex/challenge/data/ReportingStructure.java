@@ -4,7 +4,7 @@ import com.mindex.challenge.data.Employee;
 
 public class ReportingStructure {
 
-    //An employee who we need to number of reports for.
+    //An employee who we need the number of reports for.
     private Employee employee;
 
     /*
@@ -24,6 +24,9 @@ public class ReportingStructure {
         return employee;
     }
 
+    /*
+    Sets the employee for the Reporting Structure
+     */
     public void setEmployee(Employee employee) {
         this.employee = employee;
     }

@@ -14,5 +14,13 @@ public class ReportingStructureController {
     @Autowired
     private ReportingStructureService reportingStructureService;
 
+    /*
+    * Gets the reporting structure for an employee from their employee id.
+    */
+    @GetMapping
+    public ReportingStructure read(@PathVariable String id) {
+        LOG.debug("Received Reporting Structure read request for id [{}]", id);
 
+        return reportingStructureService.read(id);
+    }
 }
