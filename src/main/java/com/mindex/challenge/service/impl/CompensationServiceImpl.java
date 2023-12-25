@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.UUID;
 
+@Service
 public class CompensationServiceImpl implements CompensationService {
     private static final Logger LOG = LoggerFactory.getLogger(CompensationServiceImpl.class);
     @Autowired
@@ -29,7 +30,7 @@ public class CompensationServiceImpl implements CompensationService {
     public Compensation read(String employeeID) {
         LOG.debug("Reading compensation for employee with ID [{}]", employeeID);
 
-        Compensation compensation = compensationRepository.findCompensationWithEmployeeID(employeeID);
+        Compensation compensation = compensationRepository.findByEmployeeID(employeeID);
         if(compensation == null) {
             throw new RuntimeException("Unable to find compensation for the employee with ID: " + employeeID + ". Please ensure a valid ID was entered.");
         }

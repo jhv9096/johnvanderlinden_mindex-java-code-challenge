@@ -18,6 +18,14 @@ public class Compensation {
         this.employee = employee;
     }
 
+    public String getEmployeeID() {
+        return this.employee.getEmployeeId();
+    }
+
+    public void setEmployeeID(String id) {
+        employee.setEmployeeId(id);
+    }
+
     public double getSalary() {
         return salary;
     }

@@ -36,6 +36,14 @@ public class ReportingStructure {
         return numberOfReports;
     }
 
+    public String getEmployeeID() {
+        return employee.getEmployeeId();
+    }
+
+    public void setEmployeeID(String id) {
+        employee.setEmployeeId(id);
+    }
+
     protected void updateNumberOfReports() {
         numberOfReports = 0;
 
