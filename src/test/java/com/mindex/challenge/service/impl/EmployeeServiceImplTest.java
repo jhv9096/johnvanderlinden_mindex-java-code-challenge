@@ -38,6 +38,8 @@ public class EmployeeServiceImplTest {
     public void setup() {
         employeeUrl = "http://localhost:" + port + "/employee";
         employeeIdUrl = "http://localhost:" + port + "/employee/{id}";
+
+        System.out.println("\n\n\n\nServer Port: " + port + "\n\n\n\n"); //Test to find out server port
     }
 
     @Test
@@ -52,6 +54,7 @@ public class EmployeeServiceImplTest {
         Employee createdEmployee = restTemplate.postForEntity(employeeUrl, testEmployee, Employee.class).getBody();
 
         assertNotNull(createdEmployee.getEmployeeId());
+        System.out.println("\n\n\n\nEmployeeID: " + createdEmployee.getEmployeeId() + "\n\n\n\n"); //Temp test. Need to see EmployeeID structure
         assertEmployeeEquivalence(testEmployee, createdEmployee);
 
 

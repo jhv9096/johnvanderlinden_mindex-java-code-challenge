@@ -27,7 +27,7 @@ public class ReportingStructureServiceImplTest {
     private String reportingStructureEmployeeIDURL;
     private String employeeIDURL;
 
-    private final String testEmployeeID = "16a596ae-edd3-4847-99fe-c4518e82c86f";
+    private final String testEmployeeID = "16a596ae-edd3-4847-99fe-c4518e82c86f"; //The employee ID for John Lennon
 
     @Autowired
     private EmployeeService employeeService;
@@ -35,7 +35,7 @@ public class ReportingStructureServiceImplTest {
     private ReportingStructureService reportingStructureService;
 
     @LocalServerPort
-    private int port;
+    private int port; //= 8888; //Test set to 8888 (port we are using for localhost)
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -46,7 +46,9 @@ public class ReportingStructureServiceImplTest {
         reportingStructureEmployeeIDURL = "http://localhost:" + port + "/reportingstructure/{id}";
 
         //Employee URL to get our initial employee for the report.
-        employeeIDURL = "https://localhost:" + port + "/employee/{id}";
+        employeeIDURL = "http://localhost:" + port + "/employee/{id}";
+
+        System.out.println("\n\n\n\nServer Port: " + port + "\n\n\n\n");
     }
 
     @Test
