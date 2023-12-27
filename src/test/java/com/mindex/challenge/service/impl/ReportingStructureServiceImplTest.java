@@ -1,6 +1,7 @@
 package com.mindex.challenge.service.impl;
 
 import com.mindex.challenge.data.Employee;
+import com.mindex.challenge.data.ReportingStructure;
 import com.mindex.challenge.service.EmployeeService;
 import com.mindex.challenge.service.ReportingStructureService;
 import org.junit.Before;
@@ -24,6 +25,9 @@ import static org.junit.Assert.assertNotNull;
 public class ReportingStructureServiceImplTest {
     private String reportingStructureURL;
     private String reportingStructureEmployeeIDURL;
+    private String employeeIDURL;
+
+    private final String testEmployeeID = "16a596ae-edd3-4847-99fe-c4518e82c86f";
 
     @Autowired
     private EmployeeService employeeService;
@@ -40,11 +44,28 @@ public class ReportingStructureServiceImplTest {
     public void setup() {
         reportingStructureURL = "http://localhost:" + port + "/reportingstructure";
         reportingStructureEmployeeIDURL = "http://localhost:" + port + "/reportingstructure/{id}";
+
+        //Employee URL to get our initial employee for the report.
+        employeeIDURL = "https://localhost:" + port + "/employee/{id}";
     }
 
     @Test
-    public void testRead() {
-        //Reporting structure only requires a read REST endpoint.
+    public void testCreateRead() {
+        //Reporting structure only required a read REST endpoint. Need a create to get it there first.
+        ReportingStructure testReportingStructure = new ReportingStructure();
+        Employee testEmployee = restTemplate.getForEntity(employeeIDURL, Employee.class, testEmployeeID).getBody();
+
+        testReportingStructure.setEmployee(testEmployee);
+
+        //Create checks
+        ReportingStructure createdReportingStructure = restTemplate.postForEntity(reportingStructureURL, testReportingStructure, ReportingStructure.class).getBody();
+        assertNotNull(createdReportingStructure);
+        //int numReports = testReportingStructure.getNumberOfReports();
+
+        // Read checks
+        ReportingStructure readReportingStructure = restTemplate.getForEntity(reportingStructureEmployeeIDURL, ReportingStructure.class, createdReportingStructure.getEmployeeId()).getBody();
+        assertEquals(createdReportingStructure.getNumberOfReports(), readReportingStructure.getNumberOfReports());
+
     }
 
 }

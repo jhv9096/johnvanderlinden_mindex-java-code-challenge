@@ -31,19 +31,33 @@ public class ReportingStructure {
         this.employee = employee;
     }
 
+    /*
+    Returns the number of reports the employee is receiving.
+     */
     public int getNumberOfReports() {
         updateNumberOfReports(); //We run this everytime to ensure we return an up-to-date value.
         return numberOfReports;
     }
 
+    /*
+    Returns the employee ID of the employee.
+     */
     public String getEmployeeId() {
         return employee.getEmployeeId();
     }
 
+    /*
+    Sets the employee ID of the employee
+     */
     public void setEmployeeID(String employeeId) {
         employee.setEmployeeId(employeeId);
     }
 
+    /*
+    Helper method to update the number of reports the employee receives.
+    The number of reports is not persisted, so we have to update the value
+    every time we request the number of reports.
+     */
     protected void updateNumberOfReports() {
         numberOfReports = 0;
 

@@ -21,10 +21,10 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
     private ReportingStructureRepository reportingStructureRepository;
 
     @Override
-    public ReportingStructure create(ReportingStructure reportingStructure, Employee employee) {
-        LOG.debug("Creating reporting structure [{}] for employee [{}]", reportingStructure, employee);
+    public ReportingStructure create(ReportingStructure reportingStructure) {
+        LOG.debug("Creating reporting structure [{}]", reportingStructure);
 
-        reportingStructure.setEmployee(employee);
+        //reportingStructure.setEmployee(employee);
         reportingStructureRepository.insert(reportingStructure);
 
         return reportingStructure;

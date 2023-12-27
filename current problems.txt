@@ -1,0 +1,18 @@
+Problem: Supplied unit tests not running.
+Solution: JAVA_HOME was set to Java 17, not Java 8. Unit tests now are able to be run.
+
+Potential Problem:
+Employee GET implies that direct reports only stores the employeeID for directReports.
+	This is further backed up by the database JSON file.
+My code currently runs off the assumption that those are full employee objects in direct Report, as is implied by the code structure of the Employee object.
+
+This may need to be rectified by the ReportingStructure object making a GET call on the employeeIDs of the employees in the direct reports, so that we can access the full information of those employees.
+	Is there a better way to do this without too much entanglement?
+
+Potential Problem:
+ReportingStructure and Compensation require GET with employeeID.
+	Neither object stores employeeID.
+Is creating a getEmployeeID method in them sufficient enough for Spring to recognize and use that, even though the objects themselves are not storing the employeeID of the employee they are for?
+
+If it isn't, then what can be done to get around this issue?
+
