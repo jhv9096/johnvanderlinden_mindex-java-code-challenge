@@ -60,11 +60,22 @@ public class ReportingStructureServiceImplTest {
         //Create checks
         ReportingStructure createdReportingStructure = restTemplate.postForEntity(reportingStructureURL, testReportingStructure, ReportingStructure.class).getBody();
         assertNotNull(createdReportingStructure);
+        assertReportingStructureEquivalence(testReportingStructure, createdReportingStructure);
         //int numReports = testReportingStructure.getNumberOfReports();
 
         // Read checks
         ReportingStructure readReportingStructure = restTemplate.getForEntity(reportingStructureEmployeeIDURL, ReportingStructure.class, createdReportingStructure.getEmployeeId()).getBody();
-        assertEquals(createdReportingStructure.getNumberOfReports(), readReportingStructure.getNumberOfReports());
+        //assertEquals(createdReportingStructure.getNumberOfReports(), readReportingStructure.getNumberOfReports());
+        assertReportingStructureEquivalence(createdReportingStructure, readReportingStructure);
+    }
+
+    private static void assertReportingStructureEquivalence(ReportingStructure expected, ReportingStructure actual) {
+        assertEquals(expected.getNumberOfReports(), actual.getNumberOfReports());
+        assertEquals(expected.getEmployee().getEmployeeId(), actual.getEmployee().getEmployeeId());
+        assertEquals(expected.getEmployee().getFirstName(), actual.getEmployee().getFirstName());
+        assertEquals(expected.getEmployee().getLastName(), actual.getEmployee().getLastName());
+        assertEquals(expected.getEmployee().getPosition(), actual.getEmployee().getPosition());
+        assertEquals(expected.getEmployee().getDepartment(), actual.getEmployee().getDepartment());
 
     }
 
