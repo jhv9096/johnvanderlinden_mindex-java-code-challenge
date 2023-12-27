@@ -3,11 +3,19 @@ Solution: JAVA_HOME was set to Java 17, not Java 8. Project structure was trying
 
 Problem: SSL message doesn't go through when trying to GET an employee for the test ReportingStructure.
 	Could just make the employee object myself, but that is not exactly very condusive to the fact that the database has everything I need.
+Solution: Was trying to do an https call instead of an http call. Fixing this fixed the issue with SSL.
 
 Potential Problem:
 Employee GET implies that direct reports only stores the employeeID for directReports.
 	This is further backed up by the database JSON file.
 		My code currently runs off the assumption that those are full employee objects in direct Report, as is implied by the code structure of the Employee object.
+Problem:
+NullPointerException when calling getDirectReports.
+	This is most certainly a result of the above potential problem recognized, where the Employee IDs arecurrently the only things stored by the direct reports array, despite the
+	structure implying that a full Employee object would be filling that location.
+		I see two potential fixes to this: Fix 1 is to make it so that when the database is being read, the direct reports for an employee is checked, and if it has nulls,
+		we query the database to fill in the missing information. Fix 2 is to return what employee IDs we get back if the other information we need is null. Then, we query
+		the database to get the info we need later on as we see fit.
 
 This may need to be rectified by the ReportingStructure object making a GET call on the employeeIDs of the employees in the direct reports, so that we can access the full
 information of those employees.
