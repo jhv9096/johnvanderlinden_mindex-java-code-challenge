@@ -52,23 +52,25 @@ public class ReportingStructureServiceImplTest {
     }
 
     @Test
-    public void testCreateRead() {
-        //Reporting structure only required a read REST endpoint. Need a create to get it there first.
+    public void testRead() {
+        //Reporting structure only required a read REST endpoint.
         ReportingStructure testReportingStructure = new ReportingStructure();
         Employee testEmployee = restTemplate.getForEntity(employeeIDURL, Employee.class, testEmployeeID).getBody();
 
         testReportingStructure.setEmployee(testEmployee);
 
         //Create checks
-        ReportingStructure createdReportingStructure = restTemplate.postForEntity(reportingStructureURL, testReportingStructure, ReportingStructure.class).getBody();
-        assertNotNull(createdReportingStructure);
-        assertReportingStructureEquivalence(testReportingStructure, createdReportingStructure);
+//        ReportingStructure createdReportingStructure = restTemplate.postForEntity(reportingStructureURL, testReportingStructure, ReportingStructure.class).getBody();
+//        assertNotNull(createdReportingStructure);
+//        assertReportingStructureEquivalence(testReportingStructure, createdReportingStructure);
         //int numReports = testReportingStructure.getNumberOfReports();
 
         // Read checks
-        ReportingStructure readReportingStructure = restTemplate.getForEntity(reportingStructureEmployeeIDURL, ReportingStructure.class, createdReportingStructure.getEmployeeId()).getBody();
+        ReportingStructure readReportingStructure = restTemplate.getForEntity(reportingStructureEmployeeIDURL, ReportingStructure.class, testEmployeeID).getBody();
         //assertEquals(createdReportingStructure.getNumberOfReports(), readReportingStructure.getNumberOfReports());
-        assertReportingStructureEquivalence(createdReportingStructure, readReportingStructure);
+        //assertReportingStructureEquivalence(createdReportingStructure, readReportingStructure);
+        assertNotNull(readReportingStructure);
+        assertEquals(readReportingStructure.getNumberOfReports(), 4);
     }
 
     private static void assertReportingStructureEquivalence(ReportingStructure expected, ReportingStructure actual) {

@@ -38,3 +38,7 @@ ReportingStructure and Compensation require GET with employeeID.
 		of the employee they are for?
 			If it isn't, then what can be done to get around this issue?
 
+ReportingStructureServiceImpl
+	We KNOW that fillInMissingDirectReportingData is working. However, we still get a null pointer exception when reading from Controller.
+		is it because controller is still trying to reference a ReportingStructureService? Or is it bad method design for updateNumberOfReports?
+

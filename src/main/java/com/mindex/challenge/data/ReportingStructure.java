@@ -61,11 +61,12 @@ public class ReportingStructure {
     protected void updateNumberOfReports() {
         numberOfReports = 0;
 
-        //If an employee has no direct reports, this for loop doesn't run
-        for(Employee reportee : employee.getDirectReports()) {
-            //Add 1 report for the current reportee, as well as however many reports
-            //the reportee receives as well.
-            numberOfReports += (1 + reportee.getDirectReports().size());
+        if(employee.getDirectReports() != null) {
+            for(Employee reportee : employee.getDirectReports()) {
+                //Add 1 report for the current reportee, as well as however many reports
+                //the reportee receives as well.
+                numberOfReports += (1 + reportee.getDirectReports().size());
+            }
         }
     }
 }
