@@ -11,7 +11,7 @@ Employee GET implies that direct reports only stores the employeeID for directRe
 		My code currently runs off the assumption that those are full employee objects in direct Report, as is implied by the code structure of the Employee object.
 Problem:
 NullPointerException when calling getDirectReports.
-	This is most certainly a result of the above potential problem recognized, where the Employee IDs arecurrently the only things stored by the direct reports array, despite the
+	This is most certainly a result of the above potential problem recognized, where the Employee IDs are currently the only things stored by the direct reports array, despite the
 	structure implying that a full Employee object would be filling that location.
 		I see two potential fixes to this: Fix 1 is to make it so that when the database is being read, the direct reports for an employee is checked, and if it has nulls,
 		we query the database to fill in the missing information. Fix 2 is to return what employee IDs we get back if the other information we need is null. Then, we query
@@ -20,6 +20,16 @@ NullPointerException when calling getDirectReports.
 This may need to be rectified by the ReportingStructure object making a GET call on the employeeIDs of the employees in the direct reports, so that we can access the full
 information of those employees.
 	Is there a better way to do this without too much entanglement?
+
+What do we have for the problem above?
+	We have an employee fully filled out, save for the direct reports, which only have employee IDs in them, everything else is null.
+	We need to figure out how to fill out those nulls, or find a way to get the code to work without directly impacting those nulls.
+		Perhaps what needs to happen is in the REST call, when we create the reporting structure, we then recursively fill in the rest of the details as necessary.
+		This would ensure a fully filled out directReport structure upon creation, instead of the partially filled out one we get from a GET employee.
+
+ReportingStructure REST endpoint is not persisted, it's recalculated everytime we call it.
+	This could mean that it isn't stored in a database, and if so, perhaps the trick is NOT to build a Create and Read like Employee,but instead make a Read that repeatedly calls upon
+	Employee reads to build it up before checking the final numberOfReports value and returning it.
 
 Potential Problem:
 ReportingStructure and Compensation require GET with employeeID.

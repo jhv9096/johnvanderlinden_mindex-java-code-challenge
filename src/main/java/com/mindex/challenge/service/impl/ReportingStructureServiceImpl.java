@@ -20,34 +20,36 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
     @Autowired
     private ReportingStructureRepository reportingStructureRepository;
 
-    @Override
-    public ReportingStructure create(ReportingStructure reportingStructure) {
-        LOG.debug("Creating reporting structure [{}]", reportingStructure);
-
-        //reportingStructure.setEmployee(employee);
-        reportingStructureRepository.insert(reportingStructure);
-
-        return reportingStructure;
-    }
+//    @Override
+//    public ReportingStructure create(ReportingStructure reportingStructure) {
+//        LOG.debug("Creating reporting structure [{}]", reportingStructure);
+//
+//        //reportingStructure.setEmployee(employee);
+//        reportingStructureRepository.insert(reportingStructure);
+//
+//        return reportingStructure;
+//    }
 
     @Override
     public ReportingStructure read(String employeeId) {
         LOG.debug("Reading reporting structure whose employee has id [{}]", employeeId);
 
-        ReportingStructure reportingStructure = reportingStructureRepository.findByEmployeeId(employeeId);
-        if (reportingStructure == null) {
-            throw new RuntimeException("Invalid employeeId: " + employeeId);
-        }
+//        ReportingStructure reportingStructure = reportingStructureRepository.findByEmployeeId(employeeId);
+//        if (reportingStructure == null) {
+//            throw new RuntimeException("Invalid employeeId: " + employeeId);
+//        }
+//
+//        return reportingStructure;
 
-        return reportingStructure;
+        return null; //REPLACE ME
     }
 
-    @Override
-    public ReportingStructure update(ReportingStructure reportingStructure, Employee employee) {
-        LOG.debug("Updating reporting structure [{}] for employee [{}]", reportingStructure, employee);
-
-        return reportingStructureRepository.save(reportingStructure);
-    }
+//    @Override
+//    public ReportingStructure update(ReportingStructure reportingStructure, Employee employee) {
+//        LOG.debug("Updating reporting structure [{}] for employee [{}]", reportingStructure, employee);
+//
+//        return reportingStructureRepository.save(reportingStructure);
+//    }
 
 
 }

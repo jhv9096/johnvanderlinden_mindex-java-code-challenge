@@ -5,9 +5,9 @@ import com.mindex.challenge.data.Employee;
 
 public interface ReportingStructureService {
 
-    ReportingStructure create(ReportingStructure reportingStructure);
+//    ReportingStructure create(ReportingStructure reportingStructure);
 
     ReportingStructure read(String employeeId);
 
-    ReportingStructure update(ReportingStructure reportingStructure, Employee employee);
+//    ReportingStructure update(ReportingStructure reportingStructure, Employee employee);
 }
