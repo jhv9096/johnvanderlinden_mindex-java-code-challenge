@@ -14,13 +14,6 @@ public class ReportingStructureController {
     @Autowired
     private ReportingStructureService reportingStructureService;
 
-//    @PostMapping("/reportingstructure")
-//    public ReportingStructure create(@RequestBody ReportingStructure reportingStructure) {
-//        LOG.debug("Received reporting structure create requestfor [{}]", reportingStructure);
-//
-//        return reportingStructureService.create(reportingStructure);
-//    }
-
     /*
     * Gets the reporting structure for an employee from their employee id.
     */

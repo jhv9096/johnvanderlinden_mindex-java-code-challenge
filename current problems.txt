@@ -42,3 +42,5 @@ ReportingStructureServiceImpl
 	We KNOW that fillInMissingDirectReportingData is working. However, we still get a null pointer exception when reading from Controller.
 		is it because controller is still trying to reference a ReportingStructureService? Or is it bad method design for updateNumberOfReports?
 
+All ReportingStructure issues are fixed: updateNumberOfReports was replaced by tallyReports, which uses a recursive system to calculate the amount of reports, and the rest of the
+ReportingStructure items are now not database dependent, in line with what was stated in the README file.
