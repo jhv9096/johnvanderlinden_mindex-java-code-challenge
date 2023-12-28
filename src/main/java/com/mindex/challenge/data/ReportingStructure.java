@@ -35,7 +35,7 @@ public class ReportingStructure {
     Returns the number of reports the employee is receiving.
      */
     public int getNumberOfReports() {
-        updateNumberOfReports(); //We run this everytime to ensure we return an up-to-date value.
+        numberOfReports = tallyReports(employee); //We run this everytime to ensure we return an up-to-date value
         return numberOfReports;
     }
 
@@ -58,15 +58,27 @@ public class ReportingStructure {
     The number of reports is not persisted, so we have to update the value
     every time we request the number of reports.
      */
-    protected void updateNumberOfReports() {
-        numberOfReports = 0;
+//    protected int updateNumberOfReports() {
+//        numberOfReports = 0;
+//
+//        if(employee.getDirectReports() != null) {
+//            for(Employee reportee : employee.getDirectReports()) {
+//                //Add 1 report for the current reportee, as well as however many reports
+//                //the reportee receives as well.
+//                numberOfReports += (1 + reportee.getDirectReports().size());
+//            }
+//        }
+//
+//        return numberOfReports;
+//    }
 
-        if(employee.getDirectReports() != null) {
-            for(Employee reportee : employee.getDirectReports()) {
-                //Add 1 report for the current reportee, as well as however many reports
-                //the reportee receives as well.
-                numberOfReports += (1 + reportee.getDirectReports().size());
-            }
+    private int tallyReports(Employee employee) {
+        int talliedReports = 0;
+        if(employee.getDirectReports() == null)
+            return talliedReports; //This employee doesn't receive any reports.
+        for (Employee reportee: employee.getDirectReports()) {
+            talliedReports += 1 + tallyReports(reportee);
         }
+        return talliedReports;
     }
 }

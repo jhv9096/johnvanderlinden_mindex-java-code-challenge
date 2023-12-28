@@ -70,7 +70,7 @@ public class ReportingStructureServiceImplTest {
         //assertEquals(createdReportingStructure.getNumberOfReports(), readReportingStructure.getNumberOfReports());
         //assertReportingStructureEquivalence(createdReportingStructure, readReportingStructure);
         assertNotNull(readReportingStructure);
-        assertEquals(readReportingStructure.getNumberOfReports(), 4);
+        assertEquals(4, readReportingStructure.getNumberOfReports());
     }
 
     private static void assertReportingStructureEquivalence(ReportingStructure expected, ReportingStructure actual) {
