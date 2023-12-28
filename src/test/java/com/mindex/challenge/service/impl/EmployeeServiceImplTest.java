@@ -54,7 +54,7 @@ public class EmployeeServiceImplTest {
         Employee createdEmployee = restTemplate.postForEntity(employeeUrl, testEmployee, Employee.class).getBody();
 
         assertNotNull(createdEmployee.getEmployeeId());
-        System.out.println("\n\n\n\nEmployeeID: " + createdEmployee.getEmployeeId() + "\n\n\n\n"); //Temp test. Need to see EmployeeID structure
+        //System.out.println("\n\n\n\nEmployeeID: " + createdEmployee.getEmployeeId() + "\n\n\n\n"); //Temp test. Need to see EmployeeID structure
         assertEmployeeEquivalence(testEmployee, createdEmployee);
 
 

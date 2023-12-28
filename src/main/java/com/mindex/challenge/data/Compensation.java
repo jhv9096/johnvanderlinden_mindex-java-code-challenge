@@ -18,11 +18,11 @@ public class Compensation {
         this.employee = employee;
     }
 
-    public String getEmployeeID() {
+    public String getEmployeeId() {
         return this.employee.getEmployeeId();
     }
 
-    public void setEmployeeID(String id) {
+    public void setEmployeeId(String id) {
         employee.setEmployeeId(id);
     }
 

@@ -44,3 +44,11 @@ ReportingStructureServiceImpl
 
 All ReportingStructure issues are fixed: updateNumberOfReports was replaced by tallyReports, which uses a recursive system to calculate the amount of reports, and the rest of the
 ReportingStructure items are now not database dependent, in line with what was stated in the README file.
+
+For Compensation, how do we persist it and query it from persistence layer?
+	Understanding this should open up how to format the REST calls for create and read
+
+Problem: IllegalStateException when calling tests.
+	Why are we getting this error? The code is not that different than what we have in ReportingStructure nor is it different than what we have in Employee as well.
+	Seems we may be having a moment where a method is called when it shouldn't be. What could potentially be causing this?
+	Neither Create nor Read are responsible for the error. Is it being caused by something in setup? Or is it being caused by us calling in a testEmployee using REST?

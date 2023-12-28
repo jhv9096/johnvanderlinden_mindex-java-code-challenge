@@ -27,12 +27,12 @@ public class CompensationServiceImpl implements CompensationService {
     }
 
     @Override
-    public Compensation read(String employeeID) {
-        LOG.debug("Reading compensation for employee with ID [{}]", employeeID);
+    public Compensation read(String employeeId) {
+        LOG.debug("Reading compensation for employee with ID [{}]", employeeId);
 
-        Compensation compensation = compensationRepository.findByEmployeeID(employeeID);
+        Compensation compensation = compensationRepository.findByEmployeeID(employeeId);
         if(compensation == null) {
-            throw new RuntimeException("Unable to find compensation for the employee with ID: " + employeeID + ". Please ensure a valid ID was entered.");
+            throw new RuntimeException("Unable to find compensation for the employee with ID: " + employeeId + ". Please ensure a valid ID was entered.");
         }
 
         return compensation;
