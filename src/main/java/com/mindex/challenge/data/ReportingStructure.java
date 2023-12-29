@@ -53,25 +53,13 @@ public class ReportingStructure {
         employee.setEmployeeId(employeeId);
     }
 
-    /*
-    Helper method to update the number of reports the employee receives.
-    The number of reports is not persisted, so we have to update the value
-    every time we request the number of reports.
-     */
-//    protected int updateNumberOfReports() {
-//        numberOfReports = 0;
-//
-//        if(employee.getDirectReports() != null) {
-//            for(Employee reportee : employee.getDirectReports()) {
-//                //Add 1 report for the current reportee, as well as however many reports
-//                //the reportee receives as well.
-//                numberOfReports += (1 + reportee.getDirectReports().size());
-//            }
-//        }
-//
-//        return numberOfReports;
-//    }
 
+/*
+    Helper method which tallies up the total reports the Employee in question
+    receives. This method is private since only Employee objects populated
+    as part of a ReportingStrcuture will have access to the necessary data
+    the method requires.
+ */
     private int tallyReports(Employee employee) {
         int talliedReports = 0;
         if(employee.getDirectReports() == null)

@@ -65,4 +65,5 @@ Currently, Compensation stores an Employee Object to represent the employee. How
 
 Tests now passing! GetMapping in CompensationController was "/compensation/{employeeID}". Changed this to "/compensation/{employeeId}" which has fixed the issues with the read not being
 able to find the comensation we were creating and sending to the database.
-	I may try to look back on this, seeif I can get my intial method using EMployee Objects instead of just EmployeeID. To work. If it does, I'll go back to that.
+	I may try to look back on this, seeif I can get my intial method using Employee Objects instead of just EmployeeID. To work. If it does, I'll go back to that.
+		Did not work. Reverting changes back to working code. Cleaning up code now.

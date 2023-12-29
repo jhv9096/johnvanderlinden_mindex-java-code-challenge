@@ -10,20 +10,12 @@ public class Compensation {
 
     }
 
-//    public Employee getEmployee() {
-//        return employee;
-//    }
-//
-//    public void setEmployee(Employee employee) {
-//        this.employee = employee;
-//    }
-
     public String getEmployeeId() {
         return this.employeeId;
     }
 
     public void setEmployeeId(String id) {
-        employeeId = id;
+        this.employeeId = id;
     }
 
     public double getSalary() {
