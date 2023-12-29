@@ -22,7 +22,7 @@ public class CompensationController {
         return compensationService.create(compensation);
     }
 
-    @GetMapping("/compensation/{employeeID}")
+    @GetMapping("/compensation/{employeeId}")
     public Compensation read(@PathVariable String employeeId) {
         LOG.debug("Received compensation read request for employee with ID [{}]", employeeId);
 

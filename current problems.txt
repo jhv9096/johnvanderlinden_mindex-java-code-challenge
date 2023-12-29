@@ -52,3 +52,17 @@ Problem: IllegalStateException when calling tests.
 	Why are we getting this error? The code is not that different than what we have in ReportingStructure nor is it different than what we have in Employee as well.
 	Seems we may be having a moment where a method is called when it shouldn't be. What could potentially be causing this?
 	Neither Create nor Read are responsible for the error. Is it being caused by something in setup? Or is it being caused by us calling in a testEmployee using REST?
+		Not when we call employee either. Is it possible that us just calling testCreateRead is the problem? If so, why?
+
+Above solved after rebuilding the project and making sure that multiple instances of bootRun were not operating at the same time.
+
+Problem: Reading a compensation is returning empty.
+	Is the issue with the employeeID? We know we created it just fine, perhaps the issue is that we aren't getting things correctly?
+
+Currently, Compensation stores an Employee Object to represent the employee. However, it would make more sense to only store what we need to identify the employee.
+	Unlike ReportingStructure, which also needed an employee's direct reports, we only need the employeeID to represent the employee.
+		Using employeeID instead of a full Employee object might be better and cause less issues in the long run.
+
+Tests now passing! GetMapping in CompensationController was "/compensation/{employeeID}". Changed this to "/compensation/{employeeId}" which has fixed the issues with the read not being
+able to find the comensation we were creating and sending to the database.
+	I may try to look back on this, seeif I can get my intial method using EMployee Objects instead of just EmployeeID. To work. If it does, I'll go back to that.
